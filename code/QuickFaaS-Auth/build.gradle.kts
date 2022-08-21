@@ -5,14 +5,36 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
+    application
     kotlin("jvm") version "1.6.20"
 }
 
-group = "org.example"
-version = "1.0-SNAPSHOT"
+group = "com.pexers.quickfaas"
+version = "1.0"
 
 repositories {
     mavenCentral()
+}
+
+application {
+    mainClass.set("controller.MainKt")
+}
+
+tasks {
+    val fatJar = register<Jar>("fatJar") {
+        dependsOn.addAll(listOf("compileJava", "compileKotlin", "processResources")) // We need this for Gradle optimization to work
+        archiveClassifier.set("fat") // Naming the jar
+        duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+        manifest { attributes["Main-Class"] = application.mainClass }
+        val sourcesMain = sourceSets.main.get()
+        val contents = configurations.runtimeClasspath.get()
+            .map { if (it.isDirectory) it else zipTree(it) } +
+                sourcesMain.output
+        from(contents)
+    }
+    build {
+        dependsOn(fatJar) // Trigger fat jar creation during build
+    }
 }
 
 dependencies {

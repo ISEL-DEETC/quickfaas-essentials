@@ -36,8 +36,6 @@ public class MsAzureHttpTemplate {
                 configsJson = reader.lines().collect(Collectors.joining());
                 ConfigurationsManagerQf.setConfigurations(configsJson);
             }
-            if (inStream == null)
-                throw new NullPointerException("Failed in template function, instream is null");
             CloudResourcesManagerQf.setCloudResources(new MsAzureResources());
         }
         HttpRequestQf reqQf = new MsAzureHttpRequest(request);

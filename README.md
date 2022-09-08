@@ -11,3 +11,23 @@ Be sure to check out the [wiki](https://github.com/Pexers/quickfaas-essentials/w
 <p align="center">
   <img src="https://user-images.githubusercontent.com/47757441/185813592-ed461efa-2c40-4d43-9024-d2cf3fc13324.png" width="400">
 </p>
+
+## Directory structure
+```
+quickfaas-essentials
+│   LICENSE -> Apache License 2.0 
+│   README.md
+│
+└───Libraries ->
+│   
+└───QuickFaaS-Auth ->
+│   
+└───QuickFaaS-Model ->
+│   
+└───executables
+│   │   function-deployment ->
+│   │   QuickFaaS-Auth-1.0-fat.jar ->
+│   └───QuickFaaS-Model-1.0-fat.jar ->
+|
+└───templates ->
+```

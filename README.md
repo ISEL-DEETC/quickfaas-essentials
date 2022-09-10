@@ -24,6 +24,8 @@ quickfaas-essentials
 │   
 └───QuickFaaS-Model ->
 │   
+└───evaluation ->
+│   
 └───executables
 │   │   function-deployment ->
 │   │   QuickFaaS-Auth-1.0-fat.jar ->

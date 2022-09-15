@@ -3,7 +3,7 @@
 public class MyFunctionClass {
 
     public void myFunction(<parameters>) {
-        <definition>
+        <definition >
     }
 
 }

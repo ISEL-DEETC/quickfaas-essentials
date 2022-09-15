@@ -1,16 +1,14 @@
 /*
- * Copyright © 7/21/2022, Pexers (https://github.com/Pexers)
+ * Copyright © 9/15/2022, Pexers (https://github.com/Pexers)
  */
 
 package model
 
 import io.ktor.client.statement.*
-import java.awt.Desktop
 import java.io.File
 import java.io.FileInputStream
 import java.io.FileOutputStream
 import java.io.InputStream
-import java.net.URI
 import java.nio.charset.Charset
 import java.nio.file.Files
 import java.nio.file.Path
@@ -21,7 +19,7 @@ import kotlin.time.Duration.Companion.milliseconds
 
 object Utils {
 
-    const val RESOURCES = "src/main/resources"
+    const val RESOURCES = "src/controller.main/resources"
     const val FUNC_DEPLOYMENT = "function-deployment"
     const val FUNC_TEMPLATES = "function-templates"
     const val FUNC_DEFINITION = "function-definition"

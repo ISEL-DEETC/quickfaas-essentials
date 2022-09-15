@@ -1,5 +1,5 @@
 /*
- * Copyright © 7/21/2022, Pexers (https://github.com/Pexers)
+ * Copyright © 9/15/2022, Pexers (https://github.com/Pexers)
  */
 
 package model.specifics
@@ -8,7 +8,7 @@ import kotlinx.coroutines.runBlocking
 import kotlinx.serialization.Serializable
 import model.DeploymentData
 import model.requests.MsAzureRequests
-import propertyNotFoundAndExit
+import controller.propertyNotFoundAndExit
 
 @Serializable
 data class SubscriptionsData(var value: List<SubscriptionData>)

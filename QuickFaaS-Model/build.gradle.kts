@@ -1,5 +1,5 @@
 /*
- * Copyright © 7/21/2022, Pexers (https://github.com/Pexers)
+ * Copyright © 9/15/2022, Pexers (https://github.com/Pexers)
  */
 
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
@@ -10,7 +10,6 @@ plugins {
     kotlin("plugin.serialization") version "1.6.10"
 }
 
-
 group = "com.pexers.quickfaas"
 version = "1.0"
 
@@ -19,12 +18,18 @@ repositories {
 }
 
 application {
-    mainClass.set("MainKt")
+    mainClass.set("controller.MainKt") // No need to specify the package
 }
 
 tasks {
     val fatJar = register<Jar>("fatJar") {
-        dependsOn.addAll(listOf("compileJava", "compileKotlin", "processResources")) // We need this for Gradle optimization to work
+        dependsOn.addAll(
+            listOf(
+                "compileJava",
+                "compileKotlin",
+                "processResources"
+            )
+        ) // Needed for Gradle optimization to work
         archiveClassifier.set("fat") // Naming the jar
         duplicatesStrategy = DuplicatesStrategy.EXCLUDE
         manifest { attributes["Main-Class"] = application.mainClass }

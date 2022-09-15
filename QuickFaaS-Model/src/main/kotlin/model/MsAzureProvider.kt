@@ -1,5 +1,5 @@
 /*
- * Copyright © 7/21/2022, Pexers (https://github.com/Pexers)
+ * Copyright © 9/15/2022, Pexers (https://github.com/Pexers)
  */
 
 package model
@@ -9,7 +9,7 @@ import model.projects.MsAzureProjectData
 import model.projects.ProjectData
 import model.requests.MsAzureRequests
 import model.specifics.MsAzureSpecifics
-import propertyNotFoundAndExit
+import controller.propertyNotFoundAndExit
 
 class MsAzureProvider : CloudProvider {
 

@@ -1,10 +1,10 @@
 /*
- * Copyright © 7/21/2022, Pexers (https://github.com/Pexers)
+ * Copyright © 9/15/2022, Pexers (https://github.com/Pexers)
  */
 
 package controller
 
-import controller.Configurations.HTTP_LOG_LEVEL
+import controller.General.HTTP_LOG_LEVEL
 import io.ktor.client.*
 import io.ktor.client.engine.cio.*
 import io.ktor.client.plugins.contentnegotiation.*

@@ -1,5 +1,5 @@
 /*
- * Copyright © 7/19/2022, Pexers (https://github.com/Pexers)
+ * Copyright © 9/15/2022, Pexers (https://github.com/Pexers)
  */
 
 package model.resources.functions.runtimes.utils
@@ -35,7 +35,7 @@ object JavaUtils : RuntimeUtils {
         else pomContent
 
     fun createJavaFile(fileName: String, content: String, tmpDirName: String) =
-        Utils.createFileWithDirs(directories = "${runtime.tmpDir}/$tmpDirName/src/main/java", fileName, content)
+        Utils.createFileWithDirs(directories = "${runtime.tmpDir}/$tmpDirName/src/controller.main/java", fileName, content)
 
     fun mavenBuild(tmpDirName: String) {
         setDeploymentMsg("Building maven project")

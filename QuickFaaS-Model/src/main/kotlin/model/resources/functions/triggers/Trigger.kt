@@ -1,5 +1,5 @@
 /*
- * Copyright © 7/19/2022, Pexers (https://github.com/Pexers)
+ * Copyright © 9/15/2022, Pexers (https://github.com/Pexers)
  */
 
 package model.resources.functions.triggers

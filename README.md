@@ -15,21 +15,25 @@ Be sure to check out the [wiki](https://github.com/Pexers/quickfaas-essentials/w
 ## Directory structure
 ```
 quickfaas-essentials
-│   LICENSE -> Apache License 2.0 
-│   README.md
+│   LICENSE -> apache License 2.0 
+│   README.md -> this markup language file
 │
-└───Libraries ->
+└───Libraries -> clou-agnostic libraries for the development
+│                of serverless functions
+│
+└───QuickFaaS-Auth -> uniform programming model for OAuth2.0
+│                     authentication mechanism
+│
+└───QuickFaaS-Model -> uniform programming model for the development
+│                      & deployment of FaaS applications
 │   
-└───QuickFaaS-Auth ->
-│   
-└───QuickFaaS-Model ->
-│   
-└───evaluation ->
+└───evaluation -> performance metrics in the form of excel spreadsheets
+│                 that validate the proposed cloud-agnostic approach
 │   
 └───executables
-│   │   function-deployment ->
-│   │   QuickFaaS-Auth-1.0-fat.jar ->
-│   └───QuickFaaS-Model-1.0-fat.jar ->
+│   │   function-deployment -> required resources for FaaS deployments
+│   │   QuickFaaS-Auth-1.0-fat.jar -> authentication mechanism executable
+│   └───QuickFaaS-Model-1.0-fat.jar -> FaaS deployment executable
 |
-└───templates ->
+└───templates -> cloud-agnostic function templates
 ```

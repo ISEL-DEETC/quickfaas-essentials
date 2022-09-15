@@ -1,5 +1,5 @@
 /*
- * Copyright © 7/21/2022, Pexers (https://github.com/Pexers)
+ * Copyright © 9/15/2022, Pexers (https://github.com/Pexers)
  */
 
 package model
@@ -7,7 +7,7 @@ package model
 import model.projects.CloudProject
 import model.projects.ProjectData
 import model.specifics.CloudSpecifics
-import propertyNotFoundAndExit
+import controller.propertyNotFoundAndExit
 
 interface CloudProvider {
     val companion: CloudCompanion

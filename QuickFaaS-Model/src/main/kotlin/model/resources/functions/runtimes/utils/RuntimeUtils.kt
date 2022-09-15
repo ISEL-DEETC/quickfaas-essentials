@@ -1,5 +1,5 @@
 /*
- * Copyright © 7/19/2022, Pexers (https://github.com/Pexers)
+ * Copyright © 9/15/2022, Pexers (https://github.com/Pexers)
  */
 
 package model.resources.functions.runtimes.utils
@@ -14,7 +14,7 @@ interface RuntimeUtils {
         Utils.readResFile(filePath = "${runtime.templatesDir}/$sourcesDir/$fileName")
 
     fun createResourcesFile(fileName: String, content: String, tmpDirName: String) =
-        Utils.createFileWithDirs(directories = "${runtime.tmpDir}/$tmpDirName/src/main/resources", fileName, content)
+        Utils.createFileWithDirs(directories = "${runtime.tmpDir}/$tmpDirName/src/controller.main/resources", fileName, content)
 
     fun copySourceFileToTmp(fileName: String, sourcesDir: String, tmpDirName: String) =
         Utils.copyFile(

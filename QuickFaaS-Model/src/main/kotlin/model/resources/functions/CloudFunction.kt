@@ -1,10 +1,10 @@
 /*
- * Copyright © 7/19/2022, Pexers (https://github.com/Pexers)
+ * Copyright © 9/15/2022, Pexers (https://github.com/Pexers)
  */
 
 package model.resources.functions
 
-import controller.Configurations.AUTO_DELETE_FUNC_ZIP
+import controller.General.AUTO_DELETE_FUNC_ZIP
 import model.TriggerDeploymentData
 import model.Utils
 import model.projects.ProjectData
@@ -15,7 +15,7 @@ import model.resources.functions.runtimes.RuntimeVersion
 import model.resources.functions.runtimes.scripts.CloudBuildScripts
 import model.resources.functions.triggers.StorageTrigger
 import model.resources.functions.triggers.Trigger
-import propertyNotFoundAndExit
+import controller.propertyNotFoundAndExit
 import java.io.File
 
 interface CloudFunction {
@@ -50,7 +50,7 @@ interface CloudFunction {
     fun getEntryPoint(): String
     fun getTriggerUrl(projData: ProjectData): Pair<String, String>
 
-    fun setTrigger(triggerData: TriggerDeploymentData, projectBuckets:List<BucketData>) {
+    fun setTrigger(triggerData: TriggerDeploymentData, projectBuckets: List<BucketData>) {
         val trigger = triggers.find { trigger -> trigger.shortName == triggerData.type }
         if (trigger == null) {
             propertyNotFoundAndExit(triggerData.type)

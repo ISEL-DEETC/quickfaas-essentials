@@ -7,6 +7,7 @@ package model
 import model.projects.CloudProject
 import model.projects.ProjectData
 import model.specifics.CloudSpecifics
+import propertyNotFoundAndExit
 
 interface CloudProvider {
     val companion: CloudCompanion
@@ -15,8 +16,13 @@ interface CloudProvider {
     val cloudSpecifics: CloudSpecifics?
 
     suspend fun requestProjects(): List<ProjectData>
-    fun setProjectData(projectIdx: Int) {
-        project.projectData = projects[projectIdx]
+    fun setProjectData(projectName: String) {
+        val projectData = projects.find { proj -> proj.name == projectName }
+        if (projectData == null) {
+            propertyNotFoundAndExit(projectName)
+            return
+        }
+        project.projectData = projectData
         project.function.bucket.bucketData.name = ""  // Selected bucket depends on the selected project
     }
 }

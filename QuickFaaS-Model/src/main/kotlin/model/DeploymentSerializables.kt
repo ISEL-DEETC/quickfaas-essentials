@@ -10,11 +10,12 @@ import kotlinx.serialization.Serializable
 data class DeploymentData(
     val cloudProvider: String,
     val accessToken: String,
+    val subscriptionId: String? = null,         // Mandatory for MsAzure
     val project: String,
     val function: FunctionDeploymentData,
     val functionFile: String,
-    val dependenciesFile: String?,      // Optional
-    val configurationsFile: String?,    // Optional
+    val dependenciesFile: String? = null,      // Optional
+    val configurationsFile: String? = null,    // Optional
 )
 
 @Serializable
@@ -29,6 +30,6 @@ data class FunctionDeploymentData(
 @Serializable
 data class TriggerDeploymentData(
     val type: String,
-    val bucket: String?,    // Storage
-    val eventType: String?  // Storage
+    val bucket: String? = null,    // Storage
+    val eventType: String? = null  // Storage
 )

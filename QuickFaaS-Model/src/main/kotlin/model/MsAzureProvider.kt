@@ -9,6 +9,7 @@ import model.projects.MsAzureProjectData
 import model.projects.ProjectData
 import model.requests.MsAzureRequests
 import model.specifics.MsAzureSpecifics
+import propertyNotFoundAndExit
 
 class MsAzureProvider : CloudProvider {
 
@@ -30,8 +31,13 @@ class MsAzureProvider : CloudProvider {
         return projects
     }
 
-    override fun setProjectData(projectIdx: Int) {
-        project.projectData = projects[projectIdx]
+    override fun setProjectData(projectName: String) {
+        val projectData = projects.find { proj -> proj.name == projectName }
+        if (projectData == null) {
+            propertyNotFoundAndExit(projectName)
+            return
+        }
+        project.projectData = projectData
         // Save subscription ID in project data
         (project.projectData as MsAzureProjectData).subscriptionId = cloudSpecifics.subscription.subscriptionId
         project.function.bucket.bucketData.name = ""

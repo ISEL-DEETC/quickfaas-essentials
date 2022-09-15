@@ -4,8 +4,11 @@
 
 package model.specifics
 
+import kotlinx.coroutines.runBlocking
 import kotlinx.serialization.Serializable
+import model.DeploymentData
 import model.requests.MsAzureRequests
+import propertyNotFoundAndExit
 
 @Serializable
 data class SubscriptionsData(var value: List<SubscriptionData>)
@@ -17,17 +20,22 @@ class MsAzureSpecifics : CloudSpecifics {
     val subscription = SubscriptionData()
     var subscriptions: List<SubscriptionData> = listOf()
 
-    suspend fun requestSubscriptions(): List<SubscriptionData> {
+    override fun setSpecifics(deploymentData: DeploymentData) {
+        runBlocking { requestSubscriptions() } // HTTP request
+        val subscriptionData = subscriptions.find { sub -> sub.subscriptionId == deploymentData.subscriptionId }
+        if (subscriptionData == null) {
+            propertyNotFoundAndExit(deploymentData.subscriptionId ?: "Subscription ID")
+            return
+        }
+        subscription.displayName = subscriptionData.displayName
+        subscription.subscriptionId = subscriptionData.subscriptionId
+    }
+
+    private suspend fun requestSubscriptions(): List<SubscriptionData> {
         subscription.displayName = ""
         subscription.subscriptionId = ""
         subscriptions = MsAzureRequests.getSubscriptions().value
         return subscriptions
-    }
-
-    fun setSubscriptionData(idx: Int) {
-        val selectedSubscription = subscriptions[idx]
-        subscription.displayName = selectedSubscription.displayName
-        subscription.subscriptionId = selectedSubscription.subscriptionId
     }
 
 }

@@ -4,5 +4,8 @@
 
 package model.specifics
 
+import model.DeploymentData
+
 interface CloudSpecifics {
+    fun setSpecifics(deploymentData: DeploymentData)
 }

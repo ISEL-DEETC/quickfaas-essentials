@@ -6,7 +6,7 @@ The proposed solution aims to minimize vendor lock-in in FaaS platforms by incre
 
 The current repo provides the essential contributions of this project. This includes the uniform programming model for authentication and deployment of cloud-agnostic functions, together with the cloud-agnostic libraries.
 
-Be sure to check out the [wiki](https://github.com/Pexers/quickfaas-essentials/wiki) page for more information regarding cloud-agnostic libraries usage.
+Be sure to check out the [*wiki*](https://github.com/Pexers/quickfaas-essentials/wiki) page for more information regarding cloud-agnostic libraries usage.
 
 <p align="center">
   <img src="https://user-images.githubusercontent.com/47757441/185813592-ed461efa-2c40-4d43-9024-d2cf3fc13324.png" width="400">
@@ -24,8 +24,8 @@ quickfaas-essentials
 └───QuickFaaS-Auth -> uniform programming model for OAuth2.0
 │                     authentication mechanism
 │
-└───QuickFaaS-Model -> uniform programming model for the development
-│                      & deployment of FaaS applications
+└───QuickFaaS-Deployment -> uniform programming model for the deployment
+│                           of cloud-agnostic FaaS applications
 │   
 └───evaluation -> performance metrics in the form of excel spreadsheets
 │                 that validate the proposed cloud-agnostic approach
@@ -33,7 +33,7 @@ quickfaas-essentials
 └───executables
 │   │   function-deployment -> required resources for FaaS deployments
 │   │   QuickFaaS-Auth-1.0-fat.jar -> authentication mechanism executable
-│   └───QuickFaaS-Model-1.0-fat.jar -> FaaS deployment executable
+│   └───QuickFaaS-Deployment-1.0-fat.jar -> FaaS deployment executable
 |
 └───templates -> cloud-agnostic function templates
 ```

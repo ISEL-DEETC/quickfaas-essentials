@@ -30,7 +30,7 @@ object Utils {
     const val CONFIGS_FILE = "function-configs.json"
     const val ZIP_FILE = "function-source.zip"
 
-    var setDeploymentMsg: (msg: String) -> Unit = { msg -> println("$msg...") }
+    val setDeploymentMsg: (msg: String) -> Unit = { msg -> println("$msg...") }
 
     // lfFormat: convert '\n\r' (windows new line char) to '\n'
     fun readFile(filePath: String, lfFormat: Boolean = false): String {

@@ -21,7 +21,7 @@ object GcpBuildScripts : CloudBuildScripts {
             it.createPom(pomContent, tmpDirName)
             it.createJavaFile(entryPoint, templateContent, tmpDirName)
             it.createJavaFile(signatureFile, func.hookFunction.definition, tmpDirName)
-            it.createResourcesFile(Utils.CONFIGS_FILE, func.hookFunction.configurations, tmpDirName)
+            it.createFileInTmp(Utils.CONFIGS_FILE, func.hookFunction.configurations, "$tmpDirName/src/main/resources")
             it.mavenBuild(tmpDirName)
             it.zipBuildSources(tmpDirName, "gcp-function")
         }

@@ -5,7 +5,6 @@
 package model.resources.functions.runtimes.utils
 
 import model.Utils
-import model.Utils.setDeploymentMsg
 import model.resources.functions.runtimes.Runtime
 import org.apache.maven.shared.invoker.DefaultInvocationRequest
 import org.apache.maven.shared.invoker.DefaultInvoker
@@ -38,7 +37,6 @@ object JavaUtils : RuntimeUtils {
         Utils.createFileWithDirs(directories = "${runtime.tmpDir}/$tmpDirName/src/main/java", fileName, content)
 
     fun mavenBuild(tmpDirName: String) {
-        setDeploymentMsg("Building maven project")
         val request: InvocationRequest = DefaultInvocationRequest()
         request.mavenHome = File("${runtime.deploymentDir}/$mavenHome")
         request.baseDirectory = File("${runtime.tmpDir}/$tmpDirName")
@@ -50,7 +48,6 @@ object JavaUtils : RuntimeUtils {
     }
 
     fun zipBuildSources(tmpDirName: String, sourceDir: String) {
-        setDeploymentMsg("Zipping source code")
         Utils.zipDirectory(
             sourceDir = "${runtime.tmpDir}/$tmpDirName/target/$sourceDir",
             targetZip = "${runtime.tmpDir}/$tmpDirName/${Utils.ZIP_FILE}",

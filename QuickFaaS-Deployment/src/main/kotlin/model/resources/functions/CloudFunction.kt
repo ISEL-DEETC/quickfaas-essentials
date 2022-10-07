@@ -36,7 +36,10 @@ interface CloudFunction {
             tmpDir = Utils.createTempDir(runtimeVersion!!.runtime.tmpDir).toFile()
             val sourcesDir = "$cpShortName/${trigger.shortName}"  // e.g.: {runtime}/gcp/http
             when (runtimeVersion!!.runtime) {
-                Runtime.JAVA -> buildScripts.javaBuildScript(this, sourcesDir, tmpDir.name)
+                Runtime.JAVA -> {
+                    Utils.setDeploymentMsg("Building maven project")
+                    buildScripts.javaBuildScript(this, sourcesDir, tmpDir.name)
+                }
                 else -> throw NotImplementedError()
             }
         } catch (e: Exception) {

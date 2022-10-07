@@ -30,11 +30,11 @@ object MsAzureBuildScripts : CloudBuildScripts {
                         .replace("<container>", func.container)
                 }
             }
-            it.copySourceFileToTmp("host.json", sourcesDir, tmpDirName)
+            it.copyTemplateFileToTmp("host.json", sourcesDir, tmpDirName)
             it.createPom(pomContent, tmpDirName)
             it.createJavaFile(entryPoint, templateContent, tmpDirName)
             it.createJavaFile(signatureFile, func.hookFunction.definition, tmpDirName)
-            it.createResourcesFile(Utils.CONFIGS_FILE, func.hookFunction.configurations, tmpDirName)
+            it.createFileInTmp(Utils.CONFIGS_FILE, func.hookFunction.configurations, "$tmpDirName/src/main/resources")
             it.mavenBuild(tmpDirName)
             it.zipBuildSources(tmpDirName, "azure-functions/${func.functionApp}")
         }

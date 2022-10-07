@@ -4,7 +4,7 @@ QuickFaaS is a multi-cloud interoperability desktop tool targeting cloud-agnosti
 
 The proposed solution aims to minimize vendor lock-in in FaaS platforms by increasing the portability of serverless functions, which will, therefore, encourage developers and organizations to target different providers in exchange for a functional benefit.
 
-The current repo provides the essential contributions of this project. This includes the uniform programming model for authentication and deployment of cloud-agnostic functions, together with the cloud-agnostic libraries.
+The current repo provides the essential contributions of this project. This includes the uniform programming model for authentication and FaaS deployments, together with the cloud-agnostic libraries.
 
 Be sure to check out the [*wiki*](https://github.com/Pexers/quickfaas-essentials/wiki) page for more information regarding cloud-agnostic libraries usage.
 

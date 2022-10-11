@@ -28,9 +28,9 @@ The `func-deployment.json` file can be configured with the following values:
 | **function.runtime**<br/>&ensp; | `java11`<br/>The function's runtime. |
 | **function.trigger.type**<br/>&ensp; | `http`, `storage`<br/>The function's execution trigger. |
 | **function.trigger.bucket**<br/>[storage trigger exclusive] | The bucket to detect changes.<br/>GCP -> _Bucket_ name<br/>MsAzure -> _Storage Account_ name |
-| **function.trigger.eventType**<br/>[storage trigger exclusive] | `Create`, `Delete`, `Update`<br/>The storage event type to trigger execution. Only `Create` is<br/>supported in MsAzure for now. |
+| **function.trigger.eventType**<br/>[storage trigger exclusive] | `Create`, `Delete`, `Update`<br/>The storage event type to trigger execution. Only `Create` is supported<br/>in MsAzure for now. |
 | **functionFile**<br/>&ensp; | Path to the cloud-agnostic function definition file. |
-| **dependenciesFile**<br/>[optional] | Path to the function's extra dependencies file to be installed before deployment. |
+| **dependenciesFile**<br/>[optional] | Path to the function's extra dependencies file to be installed before<br/>deployment. |
 | **configurationsFile**<br/>[optional] | Path to the configurations JSON file. |
 
 ### Java functions

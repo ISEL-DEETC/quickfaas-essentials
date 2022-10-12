@@ -11,5 +11,8 @@ interface CloudCompanion {
     val shortName: String
     val cloudRequests: CloudRequests
 
+    /**
+     * Instantiates a new [CloudProvider]
+     */
     fun newCloudProvider(): CloudProvider
 }

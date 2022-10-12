@@ -30,8 +30,8 @@ enum class Runtime(
         dependsExtension = ".json"
     );
 
-    val templatesDir = "${FUNC_TEMPLATES}/${this.shortName}"
+    val templatesDirRoot = "${FUNC_TEMPLATES}/${this.shortName}"
     val deploymentDir = "$FUNC_DEPLOYMENT/${this.shortName}"
-    val tmpDir = "$deploymentDir/$TEMPORARY"
+    val tmpDirsRoot = "$deploymentDir/$TEMPORARY"
 
 }

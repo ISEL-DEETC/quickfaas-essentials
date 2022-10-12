@@ -11,5 +11,8 @@ interface CloudAuth {
     val configName: String
     var session: SessionData
 
+    /**
+     * Returns [OAuth2ServerSettings] settings necessary for authentication.
+     */
     fun getOAuthSettings(): OAuth2ServerSettings
 }

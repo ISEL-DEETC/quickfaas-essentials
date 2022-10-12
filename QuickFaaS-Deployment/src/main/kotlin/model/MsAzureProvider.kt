@@ -4,12 +4,12 @@
 
 package model
 
+import controller.propertyNotFoundAndExit
 import model.projects.MsAzureProject
 import model.projects.MsAzureProjectData
 import model.projects.ProjectData
 import model.requests.MsAzureRequests
 import model.specifics.MsAzureSpecifics
-import controller.propertyNotFoundAndExit
 
 class MsAzureProvider : CloudProvider {
 

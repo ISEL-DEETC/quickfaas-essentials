@@ -4,11 +4,11 @@
 
 package model.specifics
 
+import controller.propertyNotFoundAndExit
 import kotlinx.coroutines.runBlocking
 import kotlinx.serialization.Serializable
 import model.DeploymentData
 import model.requests.MsAzureRequests
-import controller.propertyNotFoundAndExit
 
 @Serializable
 data class SubscriptionsData(var value: List<SubscriptionData>)
@@ -31,6 +31,9 @@ class MsAzureSpecifics : CloudSpecifics {
         subscription.subscriptionId = subscriptionData.subscriptionId
     }
 
+    /**
+     * Request MsAzure active Subscriptions
+     */
     private suspend fun requestSubscriptions(): List<SubscriptionData> {
         subscription.displayName = ""
         subscription.subscriptionId = ""

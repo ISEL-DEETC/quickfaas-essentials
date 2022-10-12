@@ -25,18 +25,19 @@ java -jar QuickFaaS-Deployment-1.0-fat.jar
 The `func-deployment.json` file can be configured with the following values:
 | JSON property | Values |
 | --- | ----- |
-| **cloudProvider**<br/>&ensp; | `gcp`, `msazure`<br/>The chosen cloud provider for the FaaS deployment. |
-| **accessToken**<br/>&ensp; | The OAuth 2.0 access token provided by `QuickFaaS-Auth-1.0-fat.jar`<br/>after a successful authentication. |
-| **project**<br/>&ensp; | The project responsible for holding deployed resources<br/>GCP -> _Project_ name<br/>MsAzure -> _Resource Group_ name |
-| **function.name**<br/>&ensp; | The FaaS resource name.<br/>&ensp; |
-| **function.location**<br/>&ensp; | The location where the resource resides, preferably as close as possible<br/>to the end user. |
-| **function.bucket**<br/>&ensp; | GCP -> _Bucket_ name<br/>MsAzure -> _Storage Account_ name |
-| **function.runtime**<br/>&ensp; | `java11`<br/>The function's runtime. |
-| **function.trigger.type**<br/>&ensp; | `http`, `storage`<br/>The function's execution trigger. |
+| **cloudProvider** | `gcp`, `msazure`<br/>The chosen cloud provider for the FaaS deployment. |
+| **accessToken** | The OAuth 2.0 access token provided by `QuickFaaS-Auth-1.0-fat.jar` after a successful authentication. |
+| **subscriptionId**<br/>[MsAzure exclusive] | MsAzure active subscription ID. |
+| **project** | The project responsible for holding deployed resources.<br/>GCP -> _Project_ name<br/>MsAzure -> _Resource Group_ name |
+| **function.name** | The FaaS resource name.<br/>&ensp; |
+| **function.location** | The location where the resource resides, preferably as close as possible<br/>to the end user. |
+| **function.bucket** | GCP -> _Bucket_ name<br/>MsAzure -> _Storage Account_ name |
+| **function.runtime** | `java11`<br/>The function's runtime. |
+| **function.trigger.type** | `http`, `storage`<br/>The function's execution trigger. |
 | **function.trigger.bucket**<br/>[storage trigger exclusive] | The bucket to detect changes.<br/>GCP -> _Bucket_ name<br/>MsAzure -> _Storage Account_ name |
-| **function.trigger.eventType**<br/>[storage trigger exclusive] | `Create`, `Delete`, `Update`<br/>The storage event type to trigger execution. Only `Create` is supported<br/>in MsAzure for now. |
-| **functionFile**<br/>&ensp; | Path to the cloud-agnostic function definition file. |
-| **dependenciesFile**<br/>[optional] | Path to the function's extra dependencies file to be installed before<br/>deployment. |
+| **function.trigger.eventType**<br/>[storage trigger exclusive] | `Create`, `Delete`, `Update`<br/>The storage event type to trigger execution. Only `Create` is supported in MsAzure for now. |
+| **functionFile** | Path to the cloud-agnostic function definition file. |
+| **dependenciesFile**<br/>[optional] | Path to the function's extra dependencies file to be installed before deployment. |
 | **configurationsFile**<br/>[optional] | Path to the configurations JSON file. |
 ### Java functions
 QuickFaaS uses Apache Maven to build Java projects before deployment. For now, the `./function-deployment` directory already comes with a Maven version, so that you don't need to install it separately. However, this may change in future releases.

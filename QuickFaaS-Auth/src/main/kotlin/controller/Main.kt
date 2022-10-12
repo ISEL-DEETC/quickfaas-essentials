@@ -22,6 +22,9 @@ fun main() {
     }
 }
 
+/**
+ * Get selected cloud provider option
+ */
 fun getSelectedProvider(scan: Scanner): Int {
     println("Which cloud provider would you like to authenticate?")
     var option: Int

@@ -14,8 +14,14 @@ object CloudKeyStore {
     private val keyPwdContent = readResFile("keystore/key.password").toCharArray()
     private val keyStore = KeyStore.getInstance(KeyStore.getDefaultType())
 
+    /**
+     * Loads cloud keys.
+     */
     fun loadKeyStore() = keyStore.load(keyStoreStream, keyPwdContent)
 
+    /**
+     * Returns the entry value associated with the [entryKey].
+     */
     fun getEntry(entryKey: String): String {
         val entryValue = keyStore.getEntry(entryKey, KeyStore.PasswordProtection(keyPwdContent))
         return String((entryValue as KeyStore.SecretKeyEntry).secretKey.encoded)

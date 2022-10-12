@@ -10,13 +10,24 @@ import model.resources.functions.runtimes.Runtime
 interface RuntimeUtils {
     val runtime: Runtime
 
-    fun readTemplateFile(fileName: String, sourcesDir: String) =
-        Utils.readResFile(filePath = "${runtime.templatesDir}/$sourcesDir/$fileName")
+    /**
+     * Read a template file named [fileName] from [templatesDir].
+     */
+    fun readTemplateFile(fileName: String, templatesDir: String) =
+        Utils.readResFile(filePath = "${runtime.templatesDirRoot}/$templatesDir/$fileName")
 
-    fun createFileInTmp(fileName: String, content: String, tmpDirName: String) =
-        Utils.createFileWithDirs(directories = "${runtime.tmpDir}/$tmpDirName", fileName, content)
+    /**
+     * Create a file named [fileName] with a certain [content] in the
+     * recently created temporary directory [tmpDir].
+     */
+    fun createFileInTmp(fileName: String, content: String, tmpDir: String) =
+        Utils.createFileWithDirs(directories = "${runtime.tmpDirsRoot}/$tmpDir", fileName, content)
 
-    fun copyTemplateFileToTmp(fileName: String, sourcesDir: String, tmpDirName: String) =
-        createFileInTmp(fileName, readTemplateFile(fileName, sourcesDir), tmpDirName)
+    /**
+     * Copies the specified template file [fileName] from [templatesDir] to the
+     * temporary directory [tmpDir].
+     */
+    fun copyTemplateFileToTmp(fileName: String, templatesDir: String, tmpDir: String) =
+        createFileInTmp(fileName, readTemplateFile(fileName, templatesDir), tmpDir)
 
 }

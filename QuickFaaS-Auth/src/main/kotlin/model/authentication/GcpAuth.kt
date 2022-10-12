@@ -24,7 +24,3 @@ object GcpAuth : CloudAuth {
         )
     )
 }
-
-/** List of required APIs to activate:
- *  - Cloud Resource Manager API
- **/

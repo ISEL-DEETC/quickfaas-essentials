@@ -5,6 +5,7 @@
 package model.resources.functions
 
 import controller.General.AUTO_DELETE_FUNC_ZIP
+import controller.propertyNotFoundAndExit
 import model.TriggerDeploymentData
 import model.Utils
 import model.projects.ProjectData
@@ -15,7 +16,6 @@ import model.resources.functions.runtimes.RuntimeVersion
 import model.resources.functions.runtimes.scripts.CloudBuildScripts
 import model.resources.functions.triggers.StorageTrigger
 import model.resources.functions.triggers.Trigger
-import controller.propertyNotFoundAndExit
 import java.io.File
 
 interface CloudFunction {
@@ -30,15 +30,20 @@ interface CloudFunction {
     val runtimes: Array<RuntimeVersion>
     var runtimeVersion: RuntimeVersion?
 
-    fun buildAndZip(cpShortName: String): File {
+    /**
+     * Builds the necessary sources and zips the results to be
+     * deployed to the cloud provider [cpShortName].
+     */
+    fun buildAndZip(cpShortName: String): File {  // TODO: try to remove cpShortName parameter
         var tmpDir = File("")
         try {
-            tmpDir = Utils.createTempDir(runtimeVersion!!.runtime.tmpDir).toFile()
-            val sourcesDir = "$cpShortName/${trigger.shortName}"  // e.g.: {runtime}/gcp/http
+            tmpDir = Utils.createTempDir(runtimeVersion!!.runtime.tmpDirsRoot).toFile()
+            // resources/function-templates/{runtime}/{cloudProvider}/{trigger}
+            val templatesDir = "$cpShortName/${trigger.shortName}"
             when (runtimeVersion!!.runtime) {
                 Runtime.JAVA -> {
                     Utils.setDeploymentMsg("Building maven project")
-                    buildScripts.javaBuildScript(this, sourcesDir, tmpDir.name)
+                    buildScripts.javaBuildScript(this, templatesDir, tmpDir.name)
                 }
                 else -> throw NotImplementedError()
             }
@@ -49,10 +54,27 @@ interface CloudFunction {
         return tmpDir
     }
 
+    /**
+     * Deploys the ZIP file placed in [zipFilePath]
+     * to the FaaS resource held by the project [projData].
+     */
     suspend fun deployZip(zipFilePath: String, projData: ProjectData): DeploymentTimeData
+
+    /**
+     * Returns the FaaS resource entry point. Should be pointing to a template file
+     */
     fun getEntryPoint(): String
+
+    /**
+     * Returns the URL that triggers the function's execution (HTTP trigger)
+     * held by a given project [projData].
+     */
     fun getTriggerUrl(projData: ProjectData): Pair<String, String>
 
+    /**
+     * Sets the [triggerData] for the function.
+     */
+    // TODO: Find a better way to give Storage Trigger access to project buckets (remove projectBuckets param)
     fun setTrigger(triggerData: TriggerDeploymentData, projectBuckets: List<BucketData>) {
         val trigger = triggers.find { trigger -> trigger.shortName == triggerData.type }
         if (trigger == null) {
@@ -84,6 +106,9 @@ interface CloudFunction {
         }
     }
 
+    /**
+     * Sets the [runtimeVersionName] for the function.
+     */
     fun setRuntimeVersion(runtimeVersionName: String) {
         val (runtimeName, version) = runtimeVersionName.split(
             ("(?=\\d)(?<=\\D)").toRegex(), limit = 2

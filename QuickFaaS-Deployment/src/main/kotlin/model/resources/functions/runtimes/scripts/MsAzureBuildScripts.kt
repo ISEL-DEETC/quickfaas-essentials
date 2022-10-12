@@ -12,16 +12,16 @@ import model.resources.functions.triggers.StorageTrigger
 
 object MsAzureBuildScripts : CloudBuildScripts {
 
-    override fun javaBuildScript(func: CloudFunction, sourcesDir: String, tmpDirName: String) {
+    override fun javaBuildScript(func: CloudFunction, templatesDir: String, tmpDir: String) {
         func as MsAzureFunction
         func.setFunctionApp()
         val signatureFile = func.runtimeVersion!!.runtime.language.getConfigurations().signatureFile
         val entryPoint = func.getEntryPoint()
         JavaUtils.let {
-            var pomContent = it.readPom(sourcesDir)
+            var pomContent = it.readPom(templatesDir)
             pomContent = it.setPomDependencies(pomContent, func.hookFunction.dependencies)
             pomContent = it.setPomProperties(pomContent, arrayOf(Pair("functionAppName", func.functionApp)))
-            var templateContent = it.readTemplateFile(entryPoint, sourcesDir)
+            var templateContent = it.readTemplateFile(entryPoint, templatesDir)
             templateContent = templateContent.replace("<name>", func.name).replace("<configs_file>", Utils.CONFIGS_FILE)
             when (func.trigger) {
                 is StorageTrigger -> {
@@ -30,13 +30,13 @@ object MsAzureBuildScripts : CloudBuildScripts {
                         .replace("<container>", func.container)
                 }
             }
-            it.copyTemplateFileToTmp("host.json", sourcesDir, tmpDirName)
-            it.createPom(pomContent, tmpDirName)
-            it.createJavaFile(entryPoint, templateContent, tmpDirName)
-            it.createJavaFile(signatureFile, func.hookFunction.definition, tmpDirName)
-            it.createFileInTmp(Utils.CONFIGS_FILE, func.hookFunction.configurations, "$tmpDirName/src/main/resources")
-            it.mavenBuild(tmpDirName)
-            it.zipBuildSources(tmpDirName, "azure-functions/${func.functionApp}")
+            it.copyTemplateFileToTmp("host.json", templatesDir, tmpDir)
+            it.createPom(pomContent, tmpDir)
+            it.createJavaSourceFile(entryPoint, templateContent, tmpDir)
+            it.createJavaSourceFile(signatureFile, func.hookFunction.definition, tmpDir)
+            it.createFileInTmp(Utils.CONFIGS_FILE, func.hookFunction.configurations, "$tmpDir/src/main/resources")
+            it.mavenBuild(tmpDir)
+            it.zipMavenBuild(tmpDir, "azure-functions/${func.functionApp}")
         }
     }
 

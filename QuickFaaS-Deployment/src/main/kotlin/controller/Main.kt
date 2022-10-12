@@ -13,7 +13,7 @@ import model.MsAzureProvider
 import model.Utils
 import kotlin.system.exitProcess
 
-private val cloudProviders = arrayOf(MsAzureProvider, GcpProvider)
+private val cloudProviders = arrayOf(MsAzureProvider, GcpProvider)  // Supported cloud providers
 
 fun main() {
     // Read function deployment JSON file
@@ -27,7 +27,7 @@ fun main() {
         // Set access token
         cp.companion.cloudRequests.setBearerToken(deploymentJson.accessToken)
 
-        // Set specific attributes. Example: subscriptionID for MsAzure
+        // Set cloud-specific attributes. Example: subscriptionID for MsAzure
         cp.cloudSpecifics?.setSpecifics(deploymentJson)
 
         // Set project
@@ -45,7 +45,6 @@ fun main() {
             cp.project.setBucketData(deploymentJson.function.bucket)
 
             // Set trigger
-            // TODO: Find a better way to give Storage Trigger access to project buckets
             fn.setTrigger(deploymentJson.function.trigger, cp.project.buckets)
 
             // Set runtime & respective version
@@ -82,7 +81,10 @@ fun main() {
     }
 }
 
-fun propertyNotFoundAndExit(propertyName: String) {
-    println("'$propertyName' not found.")
+/**
+ * Informs user that a given JSON [property] from the func-deployment.json was not found.
+ */
+fun propertyNotFoundAndExit(property: String) {
+    println("'$property' not found.")
     exitProcess(1)
 }

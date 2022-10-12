@@ -21,7 +21,9 @@ private const val HTTP_REQUEST_TIMEOUT: Long = 120000  // 2 min timeout
 private const val ANSI_RESET = "\u001B[0m"
 private const val ANSI_BLUE = "\u001B[34m"
 
+// The HTTP client
 val httpClient = HttpClient(CIO.create { requestTimeout = HTTP_REQUEST_TIMEOUT }) {
+    // Observe HTTP client activity
     install(ResponseObserver) {
         onResponse { response ->
             when (HTTP_LOG_LEVEL) {
@@ -31,6 +33,7 @@ val httpClient = HttpClient(CIO.create { requestTimeout = HTTP_REQUEST_TIMEOUT }
             }
         }
     }
+    // JSON serialization
     install(ContentNegotiation) {
         json(Json {
             prettyPrint = true

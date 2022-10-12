@@ -19,10 +19,13 @@ private const val API_PORT: Int = 8080
 private const val API_BASE_PATH = "quickfaas"
 const val API_SCHEME_AUTHORITY = "$API_DOMAIN:$API_PORT/$API_BASE_PATH"
 
+/**
+ * Starts an HTTP server capable of receiving access tokens for the given [cloudProviders].
+ */
 fun startHttpServer(cloudProviders: Array<CloudAuth>) {
     embeddedServer(Netty, port = API_PORT) {
         install(Authentication) {
-            loadKeyStore()  // Load OAuth secrets
+            loadKeyStore()
             cloudProviders.forEach { ca ->
                 oauth(ca.configName) {
                     urlProvider = { "$API_DOMAIN:$API_PORT/$API_BASE_PATH/${ca.shortName}/callback" }

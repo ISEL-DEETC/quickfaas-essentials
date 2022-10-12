@@ -7,5 +7,8 @@ package model.specifics
 import model.DeploymentData
 
 interface CloudSpecifics {
+    /**
+     * Sets cloud-specific data specified in [deploymentData].
+     */
     fun setSpecifics(deploymentData: DeploymentData)
 }

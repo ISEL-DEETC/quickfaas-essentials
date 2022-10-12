@@ -4,10 +4,10 @@
 
 package model
 
+import controller.propertyNotFoundAndExit
 import model.projects.CloudProject
 import model.projects.ProjectData
 import model.specifics.CloudSpecifics
-import controller.propertyNotFoundAndExit
 
 interface CloudProvider {
     val companion: CloudCompanion
@@ -15,7 +15,14 @@ interface CloudProvider {
     val project: CloudProject
     val cloudSpecifics: CloudSpecifics?
 
+    /**
+     * Requests available projects. (MsAzure -> Resource Groups)
+     */
     suspend fun requestProjects(): List<ProjectData>
+
+    /**
+     * Sets the project data for the specified [projectName].
+     */
     fun setProjectData(projectName: String) {
         val projectData = projects.find { proj -> proj.name == projectName }
         if (projectData == null) {

@@ -16,6 +16,9 @@ enum class Language(
 ) {
     JAVA(configsFile = "java-configs.json"), JAVASCRIPT(configsFile = "javascript-configs.json");
 
+    /**
+     * Returns configurations data for this language.
+     */
     fun getConfigurations(): LanguageConfigsData {
         if (configurations == null) {
             val langConfigJson = Utils.readResFile("${Utils.FUNC_DEFINITION}/${Utils.LANG_CONFIGS}/$configsFile")
@@ -24,6 +27,9 @@ enum class Language(
         return configurations!!
     }
 
+    /**
+     * Returns the default function signature for this language.
+     */
     fun getSignature(): String = signature.ifEmpty {
         signature = Utils.readResFile(
             filePath = "${Utils.FUNC_DEFINITION}/${Utils.LANG_SIGNATURES}/${getConfigurations().signatureFile}",

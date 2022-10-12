@@ -16,8 +16,14 @@ import kotlin.system.exitProcess
 
 data class SessionData(var token: String = "")
 
+/**
+ * Opens provider's authentication web page
+ */
 fun openAuthWebPage(cpShortName: String) = Utils.openWebPage("$API_SCHEME_AUTHORITY/$cpShortName/login")
 
+/**
+ * Register callback API routes
+ */
 fun Routing.authRoutes(apiBasePath: String, ca: CloudAuth) {
     val cpShortName = ca.shortName
     route("/$apiBasePath/$cpShortName") {

@@ -10,20 +10,20 @@ import model.resources.functions.runtimes.utils.JavaUtils
 
 object GcpBuildScripts : CloudBuildScripts {
 
-    override fun javaBuildScript(func: CloudFunction, sourcesDir: String, tmpDirName: String) {
+    override fun javaBuildScript(func: CloudFunction, templatesDir: String, tmpDir: String) {
         val signatureFile = func.runtimeVersion!!.runtime.language.getConfigurations().signatureFile
         val entryPoint = func.getEntryPoint()
         JavaUtils.let {
-            var pomContent = it.readPom(sourcesDir)
+            var pomContent = it.readPom(templatesDir)
             pomContent = it.setPomDependencies(pomContent, func.hookFunction.dependencies)
-            var templateContent = it.readTemplateFile(entryPoint, sourcesDir)
+            var templateContent = it.readTemplateFile(entryPoint, templatesDir)
             templateContent = templateContent.replace("<configs_file>", Utils.CONFIGS_FILE)
-            it.createPom(pomContent, tmpDirName)
-            it.createJavaFile(entryPoint, templateContent, tmpDirName)
-            it.createJavaFile(signatureFile, func.hookFunction.definition, tmpDirName)
-            it.createFileInTmp(Utils.CONFIGS_FILE, func.hookFunction.configurations, "$tmpDirName/src/main/resources")
-            it.mavenBuild(tmpDirName)
-            it.zipBuildSources(tmpDirName, "gcp-function")
+            it.createPom(pomContent, tmpDir)
+            it.createJavaSourceFile(entryPoint, templateContent, tmpDir)
+            it.createJavaSourceFile(signatureFile, func.hookFunction.definition, tmpDir)
+            it.createFileInTmp(Utils.CONFIGS_FILE, func.hookFunction.configurations, "$tmpDir/src/main/resources")
+            it.mavenBuild(tmpDir)
+            it.zipMavenBuild(tmpDir, "gcp-function")
         }
     }
 

@@ -4,7 +4,9 @@
 
 package controller
 
+import controller.General.ANSI_RESET
 import controller.General.HTTP_LOG_LEVEL
+import controller.General.logMessage
 import io.ktor.client.*
 import io.ktor.client.engine.cio.*
 import io.ktor.client.plugins.contentnegotiation.*
@@ -17,8 +19,6 @@ enum class HttpLogLevel { BASIC, DETAILED, NONE }
 
 private const val HTTP_REQUEST_TIMEOUT: Long = 120000  // 2 min timeout
 
-// Console colors
-private const val ANSI_RESET = "\u001B[0m"
 private const val ANSI_BLUE = "\u001B[34m"
 
 // The HTTP client
@@ -27,8 +27,14 @@ val httpClient = HttpClient(CIO.create { requestTimeout = HTTP_REQUEST_TIMEOUT }
     install(ResponseObserver) {
         onResponse { response ->
             when (HTTP_LOG_LEVEL) {
-                HttpLogLevel.BASIC -> println("HttpRequest[${response.request.method.value} $ANSI_BLUE${response.request.url.encodedPathAndQuery}$ANSI_RESET] | HttpResponse[${response.status}]")
-                HttpLogLevel.DETAILED -> println("HttpRequest[${response.request.method.value} ${response.request.url}, ContentType=${response.request.content.contentType}] | HttpResponse[${response.status}]")
+                HttpLogLevel.BASIC -> logMessage(
+                    "${ANSI_RESET}HttpRequest[${response.request.method.value} $ANSI_BLUE${response.request.url.encodedPathAndQuery}$ANSI_RESET] | HttpResponse[${response.status}]",
+                    2
+                )
+                HttpLogLevel.DETAILED -> logMessage(
+                    "${ANSI_RESET}HttpRequest[${response.request.method.value} $ANSI_BLUE${response.request.url}$ANSI_RESET, ContentType=${response.request.content.contentType}] | HttpResponse[${response.status}]",
+                    2
+                )
                 HttpLogLevel.NONE -> {}
             }
         }

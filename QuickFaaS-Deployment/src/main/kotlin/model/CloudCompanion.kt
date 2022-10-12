@@ -12,7 +12,7 @@ interface CloudCompanion {
     val cloudRequests: CloudRequests
 
     /**
-     * Instantiates a new [CloudProvider]
+     * Instantiates a new [CloudProvider].
      */
     fun newCloudProvider(): CloudProvider
 }

@@ -4,7 +4,7 @@
 
 package model
 
-import controller.propertyNotFoundAndExit
+import controller.logPropertyMissing
 import model.projects.MsAzureProject
 import model.projects.MsAzureProjectData
 import model.projects.ProjectData
@@ -34,7 +34,7 @@ class MsAzureProvider : CloudProvider {
     override fun setProjectData(projectName: String) {
         val projectData = projects.find { proj -> proj.name == projectName }
         if (projectData == null) {
-            propertyNotFoundAndExit(projectName)
+            logPropertyMissing("project", projectName)
             return
         }
         project.projectData = projectData

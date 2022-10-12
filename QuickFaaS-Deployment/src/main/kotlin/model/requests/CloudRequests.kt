@@ -6,7 +6,7 @@ package model.requests
 
 interface CloudRequests {
     /**
-     * Store recently arrived OAuth 2.0 bearer [token].
+     * Stores recently arrived OAuth 2.0 bearer [token].
      */
     fun setBearerToken(token: String)
 }

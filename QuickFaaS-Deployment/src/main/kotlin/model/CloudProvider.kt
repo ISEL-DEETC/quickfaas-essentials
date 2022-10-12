@@ -4,7 +4,7 @@
 
 package model
 
-import controller.propertyNotFoundAndExit
+import controller.logPropertyMissing
 import model.projects.CloudProject
 import model.projects.ProjectData
 import model.specifics.CloudSpecifics
@@ -16,7 +16,7 @@ interface CloudProvider {
     val cloudSpecifics: CloudSpecifics?
 
     /**
-     * Requests available projects. (MsAzure -> Resource Groups)
+     * Requests available projects (MsAzure -> Resource Groups).
      */
     suspend fun requestProjects(): List<ProjectData>
 
@@ -26,7 +26,7 @@ interface CloudProvider {
     fun setProjectData(projectName: String) {
         val projectData = projects.find { proj -> proj.name == projectName }
         if (projectData == null) {
-            propertyNotFoundAndExit(projectName)
+            logPropertyMissing("project", projectName)
             return
         }
         project.projectData = projectData

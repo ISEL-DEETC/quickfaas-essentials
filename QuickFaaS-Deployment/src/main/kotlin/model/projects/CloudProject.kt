@@ -4,7 +4,7 @@
 
 package model.projects
 
-import controller.propertyNotFoundAndExit
+import controller.logPropertyMissing
 import model.resources.buckets.BucketData
 import model.resources.functions.CloudFunction
 
@@ -19,12 +19,12 @@ interface CloudProject {
     suspend fun requestBuckets(): List<BucketData>
 
     /**
-     * Find and set function's [BucketData] for the specified [bucketName]
+     * Sets function's [BucketData] for the specified [bucketName]
      */
     fun setBucketData(bucketName: String) {
         val bucketData = buckets.find { bucket -> bucket.name == bucketName }
         if (bucketData == null) {
-            propertyNotFoundAndExit(bucketName)
+            logPropertyMissing("function.bucket", bucketName)
             return
         }
         function.bucket.bucketData = bucketData

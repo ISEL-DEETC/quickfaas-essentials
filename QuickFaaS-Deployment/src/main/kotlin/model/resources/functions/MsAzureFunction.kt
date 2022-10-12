@@ -4,12 +4,12 @@
 
 package model.resources.functions
 
+import controller.General.logMessage
 import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.JsonPrimitive
 import model.Utils
 import model.Utils.FUNC_TEMPLATES
 import model.Utils.PROVIDER_CONFIGS
-import model.Utils.setDeploymentMsg
 import model.projects.MsAzureProjectData
 import model.projects.ProjectData
 import model.requests.MsAzureRequests
@@ -46,7 +46,7 @@ class MsAzureFunction : CloudFunction {
         val resourceGroup = projData.name
         val funcAppExists = MsAzureRequests.checkFunctionAppExistence(subscriptionId, resourceGroup, functionApp)
         if (!funcAppExists) {
-            setDeploymentMsg("Deploying function app '$functionApp'")
+            logMessage("Deploying function app '$functionApp'...", 2)
             val storageAccountKey =
                 MsAzureRequests.getStorageAccountAccessKey(subscriptionId, resourceGroup, bucket.bucketData.name).value
             val functionAppJson = getJsonConfigs(storageAccountKey)
@@ -66,11 +66,11 @@ class MsAzureFunction : CloudFunction {
                 MsAzureRequests.setAppSettings(
                     subscriptionId, resourceGroup, functionApp, JsonObject(appSettings).toString()
                 )
-                setDeploymentMsg("Creating container '$container'")
+                logMessage("Creating container '$container'...", 2)
                 MsAzureRequests.createContainer(subscriptionId, resourceGroup, storageAccount, container)
             }
         }
-        setDeploymentMsg("Deploying function '$name'")
+        logMessage("Deploying function '$name'...", 2)
         val zipUpload = MsAzureRequests.deployAzureFunction(functionApp, zipFilePath)
         deploymentInfo.zipUploadTime = Utils.calculateHttpDuration(zipUpload)
         return deploymentInfo

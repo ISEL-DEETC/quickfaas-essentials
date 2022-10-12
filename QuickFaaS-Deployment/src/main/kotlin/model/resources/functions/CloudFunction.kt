@@ -5,7 +5,8 @@
 package model.resources.functions
 
 import controller.General.AUTO_DELETE_FUNC_ZIP
-import controller.propertyNotFoundAndExit
+import controller.General.logMessage
+import controller.logPropertyMissing
 import model.TriggerDeploymentData
 import model.Utils
 import model.projects.ProjectData
@@ -42,7 +43,7 @@ interface CloudFunction {
             val templatesDir = "$cpShortName/${trigger.shortName}"
             when (runtimeVersion!!.runtime) {
                 Runtime.JAVA -> {
-                    Utils.setDeploymentMsg("Building maven project")
+                    logMessage("Building maven project...", 2)
                     buildScripts.javaBuildScript(this, templatesDir, tmpDir.name)
                 }
                 else -> throw NotImplementedError()
@@ -78,7 +79,7 @@ interface CloudFunction {
     fun setTrigger(triggerData: TriggerDeploymentData, projectBuckets: List<BucketData>) {
         val trigger = triggers.find { trigger -> trigger.shortName == triggerData.type }
         if (trigger == null) {
-            propertyNotFoundAndExit(triggerData.type)
+            logPropertyMissing("function.trigger.type", triggerData.type)
             return
         }
         this.trigger = trigger
@@ -90,14 +91,14 @@ interface CloudFunction {
             is StorageTrigger -> {
                 val triggerBucket = projectBuckets.find { bucket -> bucket.name == triggerData.bucket }
                 if (triggerBucket == null) {
-                    propertyNotFoundAndExit(triggerData.bucket ?: "Trigger bucket")
+                    logPropertyMissing("function.trigger.bucket", triggerData.bucket ?: "")
                     return
                 }
                 trigger.bucketData = triggerBucket
                 val eventType =
                     StorageTrigger.EventType.values().find { type -> type.eventName == triggerData.eventType }
                 if (eventType == null) {
-                    propertyNotFoundAndExit(triggerData.eventType ?: "Event type")
+                    logPropertyMissing("function.trigger.eventType", triggerData.eventType ?: "")
                     return
                 }
                 trigger.eventType = eventType
@@ -117,7 +118,7 @@ interface CloudFunction {
         runtimeVersion = RuntimeVersion.values()
             .find { runtimeVersion -> runtimeVersion.runtime == runtime && runtimeVersion.version == version }
         if (runtimeVersion == null) {
-            propertyNotFoundAndExit(runtimeVersionName)
+            logPropertyMissing("function.runtime", runtimeVersionName)
             return
         }
         hookFunction.dependencies = runtimeVersion!!.runtime.dependsSyntax

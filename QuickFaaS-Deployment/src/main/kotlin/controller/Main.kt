@@ -4,24 +4,26 @@
 
 package controller
 
+import controller.General.logMessage
 import kotlinx.coroutines.runBlocking
+import kotlinx.serialization.SerializationException
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
 import model.DeploymentData
 import model.GcpProvider
 import model.MsAzureProvider
 import model.Utils
-import kotlin.system.exitProcess
 
 private val cloudProviders = arrayOf(MsAzureProvider, GcpProvider)  // Supported cloud providers
 
 fun main() {
-    // Read function deployment JSON file
-    val deploymentJson: DeploymentData = Json.decodeFromString(Utils.readFile("./func-deployment.json"))
+
+    // Deserialize 'func-deployment.json' JSON file
+    val deploymentJson: DeploymentData = deserializeJson("./func-deployment.json")!!
 
     // Set cloud provider
     val cloudProvider = cloudProviders.find { cc -> cc.shortName == deploymentJson.cloudProvider }?.newCloudProvider()
-    if (cloudProvider == null) propertyNotFoundAndExit("cloudProvider")
+    if (cloudProvider == null) logPropertyMissing("cloudProvider", deploymentJson.cloudProvider)
 
     cloudProvider!!.let { cp ->
         // Set access token
@@ -74,17 +76,30 @@ fun main() {
         runBlocking { // this: CoroutineScope
             cp.project.function.deployZip("${tmpDir.path}/${Utils.ZIP_FILE}", cp.project.projectData) // HTTP requests
         }
+
         // Delete tmpDir
         if (General.AUTO_DELETE_FUNC_ZIP && tmpDir.path.isNotEmpty()) tmpDir.deleteRecursively()
 
-        println("Deployment finished successfully!")
+        logMessage("Deployment finished successfully!", 1)
     }
 }
 
 /**
- * Informs user that a given JSON [property] from the func-deployment.json was not found.
+ * Informs that a certain property is missing or invalid.
  */
-fun propertyNotFoundAndExit(property: String) {
-    println("'$property' not found.")
-    exitProcess(1)
+fun logPropertyMissing(property: String, value: String) {
+    logMessage("The value '$value' assigned to the JSON '$property' is missing or invalid.", 1)
 }
+
+/**
+ * Deserialize [jsonFile] into [DeploymentData].
+ */
+private fun deserializeJson(jsonFile: String): DeploymentData? {
+    return try {
+        Json.decodeFromString(Utils.readFile(jsonFile))
+    } catch (e: SerializationException) {
+        logMessage(e.message!!, 1)
+        null
+    }
+}
+

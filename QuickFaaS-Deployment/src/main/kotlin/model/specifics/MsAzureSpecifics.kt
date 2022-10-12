@@ -4,7 +4,7 @@
 
 package model.specifics
 
-import controller.propertyNotFoundAndExit
+import controller.logPropertyMissing
 import kotlinx.coroutines.runBlocking
 import kotlinx.serialization.Serializable
 import model.DeploymentData
@@ -24,7 +24,7 @@ class MsAzureSpecifics : CloudSpecifics {
         runBlocking { requestSubscriptions() } // HTTP request
         val subscriptionData = subscriptions.find { sub -> sub.subscriptionId == deploymentData.subscriptionId }
         if (subscriptionData == null) {
-            propertyNotFoundAndExit(deploymentData.subscriptionId ?: "Subscription ID")
+            logPropertyMissing("subscriptionId", deploymentData.subscriptionId ?: "")
             return
         }
         subscription.displayName = subscriptionData.displayName
@@ -32,7 +32,7 @@ class MsAzureSpecifics : CloudSpecifics {
     }
 
     /**
-     * Request MsAzure active Subscriptions
+     * Requests MsAzure active subscriptions.
      */
     private suspend fun requestSubscriptions(): List<SubscriptionData> {
         subscription.displayName = ""

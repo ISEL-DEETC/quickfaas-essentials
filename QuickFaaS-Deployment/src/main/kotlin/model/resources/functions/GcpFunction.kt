@@ -4,11 +4,12 @@
 
 package model.resources.functions
 
+import controller.General
+import controller.General.logMessage
 import model.Utils
 import model.Utils.FUNC_TEMPLATES
 import model.Utils.PROVIDER_CONFIGS
 import model.Utils.calculateHttpDuration
-import model.Utils.setDeploymentMsg
 import model.projects.GcpProjectData
 import model.projects.ProjectData
 import model.requests.GcpRequests
@@ -37,11 +38,11 @@ class GcpFunction : CloudFunction {
 
     override suspend fun deployZip(zipFilePath: String, projData: ProjectData): DeploymentTimeData {
         val deploymentInfo = DeploymentTimeData()
-        setDeploymentMsg("Storing source code in bucket")
+        logMessage("Storing source code in bucket...", 2)
         val zipUpload = bucket.uploadToBucket(zipFilePath, function = this)
         val projectId = (projData as GcpProjectData).projectId
         val faasJson = getJsonConfigs(projectId, zipFilePath.substringAfterLast('/'))
-        setDeploymentMsg("Deploying function '$name'")
+        logMessage("Deploying function '$name'...", 2)
         if (!GcpRequests.checkCloudFunctionExistence(projectId, location, name)) {
             deploymentInfo.deploymentStartDate =
                 GcpRequests.deployCloudFunction(projectId, location, faasJson).requestTime

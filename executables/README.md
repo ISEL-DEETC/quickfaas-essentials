@@ -39,6 +39,6 @@ The `func-deployment.json` file can be configured with the following values:
 | **function.trigger.eventType**<br/>[storage trigger exclusive] | _string_ | `Create`, `Delete`, `Update`<br/>The storage event type to trigger execution. Only `Create` is supported in MsAzure for now. |
 | **functionFile** | _string_ | Path to the cloud-agnostic function definition file. |
 | **dependenciesFile**<br/>[optional] | _string_ | Path to the function's extra dependencies file to be installed before deployment. |
-| **configurationsFile**<br/>[optional] | _string_ | Path to the configurations JSON file. |
+| **configurationsFile**<br/>[optional] | _string_ | Path to the configurations JSON file. The configurations file allows users to specify JSON properties that can be accessed during function's execution time. |
 ### Java functions
 QuickFaaS uses Apache Maven to build Java projects before deployment. For now, the `./function-deployment` directory already comes with a Maven version, so that you don't need to install it separately. However, this may change in future releases.

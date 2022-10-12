@@ -18,10 +18,7 @@ quickfaas-essentials
 │   LICENSE -> apache License 2.0 
 │   README.md -> this markup language file
 │
-└───Libraries -> clou-agnostic libraries for the development
-│                of serverless functions
-│
-└───QuickFaaS-Auth -> uniform programming model for OAuth2.0
+└───QuickFaaS-Auth -> uniform programming model for OAuth 2.0
 │                     authentication mechanism
 │
 └───QuickFaaS-Deployment -> uniform programming model for the deployment
@@ -34,6 +31,9 @@ quickfaas-essentials
 │   │   function-deployment -> required resources for FaaS deployments
 │   │   QuickFaaS-Auth-1.0-fat.jar -> authentication mechanism executable
 │   └───QuickFaaS-Deployment-1.0-fat.jar -> FaaS deployment executable
+│
+└───libraries -> clou-agnostic libraries for the development
+│                of serverless functions
 |
 └───templates -> cloud-agnostic function templates
 ```

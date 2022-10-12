@@ -33,9 +33,9 @@ The `func-deployment.json` file can be configured with the following values:
 | **function.location** | _string_ | The location where the resource resides, preferably as close as possible to the end user. |
 | **function.bucket** | _string_ | GCP -> _Bucket_ name<br/>MsAzure -> _Storage Account_ name |
 | **function.runtime** | _string_ | `java11`<br/>The function's runtime. |
-| **function.trigger** | _object_ | The function's execution trigger configuration. |
-| **function.trigger.type** | _string_ | `http`, `storage`<br/>The function's execution trigger name. |
-| **function.trigger.bucket**<br/>[storage trigger exclusive] | _string_ | The bucket to detect changes.<br/>GCP -> _Bucket_ name<br/>MsAzure -> _Storage Account_ name |
+| **function.trigger** | _object_ | Function's event trigger configuration. |
+| **function.trigger.type** | _string_ | `http`, `storage`<br/>Function's event trigger type. |
+| **function.trigger.bucket**<br/>[storage trigger exclusive] | _string_ | The storage bucket to detect changes.<br/>GCP -> _Bucket_ name<br/>MsAzure -> _Storage Account_ name |
 | **function.trigger.eventType**<br/>[storage trigger exclusive] | _string_ | `Create`, `Delete`, `Update`<br/>The storage event type to trigger execution. Only `Create` is supported in MsAzure for now. |
 | **functionFile** | _string_ | Path to the cloud-agnostic function definition file. |
 | **dependenciesFile**<br/>[optional] | _string_ | Path to the function's extra dependencies file to be installed before deployment. |

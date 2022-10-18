@@ -7,7 +7,7 @@ Run the JAR file on the command line or terminal window:
 ```
 java -jar QuickFaaS-Auth-1.0-fat.jar
 ```
-You will be prompt with several options of cloud providers to choose from. After, the application will try to redirect you to the provider's authentication webpage using your default browser. The authentication process relies on the OAuth 2.0 protocol. The application will never have access to your credentials. You will, however, be requested to grant access to a certain number of scopes that are required for the application to work as expected.
+You will be prompt with several options of cloud providers to choose from. The application will then try to redirect you to the provider's authentication webpage using your default browser. The authentication process relies on the OAuth 2.0 protocol. The application will never have access to your credentials. You will, however, be requested to grant access to a certain number of scopes that are required for the application to work as expected.
 
 After a successful authentication, an access token will be provided. You will be asked for this token to be inserted in the `func-deployment.json` file to enable FaaS deployments.
 
@@ -21,6 +21,8 @@ Run the JAR file on the command line or terminal window:
 ```
 java -jar QuickFaaS-Deployment-1.0-fat.jar
 ```
+_**Note:**_ Google Cloud Platform deployments require the [_Cloud Functions API_](https://cloud.google.com/functions/docs/reference/rest) and the [_Cloud Resource Manager API_](https://cloud.google.com/resource-manager/reference/rest) enabled.
+
 The `func-deployment.json` file can be configured with the following values:
 | Property name | Type | Values & Description |
 | --- | --- | --- |
@@ -40,5 +42,6 @@ The `func-deployment.json` file can be configured with the following values:
 | **functionFile** | _string_ | Path to the cloud-agnostic function definition file. |
 | **dependenciesFile**<br/>[optional] | _string_ | Path to the function's extra dependencies file to be installed before deployment. |
 | **configurationsFile**<br/>[optional] | _string_ | Path to the configurations JSON file. The configurations file allows users to specify JSON properties that can be accessed during function's execution time. |
+
 ### Java functions
 QuickFaaS uses Apache Maven to build Java projects before deployment. For now, the `./function-deployment` directory already comes with a Maven version, so that you don't need to install it separately. However, this may change in future releases.

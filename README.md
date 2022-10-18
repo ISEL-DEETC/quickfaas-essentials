@@ -24,8 +24,11 @@ quickfaas-essentials
 └───QuickFaaS-Deployment -> uniform programming model for the deployment
 │                           of cloud-agnostic FaaS applications
 │   
-└───evaluation -> performance metrics in the form of excel spreadsheets
-│                 that validate the proposed cloud-agnostic approach
+└───evaluation
+│   │   search-blobs -> use case designed exclusively for
+│   │                   the purpose of performance testing
+│   └───QuickFaaS-Metrics.xlsx -> performance metrics data in the
+│                                 form of excel spreadsheets
 │   
 └───executables
 │   │   function-deployment -> required resources for FaaS deployments

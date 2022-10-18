@@ -22,7 +22,7 @@ data class SessionData(var token: String = "")
 fun openAuthWebPage(cpShortName: String) = Utils.openWebPage("$API_SCHEME_AUTHORITY/$cpShortName/login")
 
 /**
- * Register callback API routes
+ * Registers callback API routes
  */
 fun Routing.authRoutes(apiBasePath: String, ca: CloudAuth) {
     val cpShortName = ca.shortName

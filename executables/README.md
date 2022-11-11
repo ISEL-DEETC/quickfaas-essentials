@@ -1,13 +1,13 @@
 # JAR executables
 
-In order to execute QuickFaaS JAR files, you will first need to install JDK 11 (Java Development Kit) or later, which already includes a JRE (Java Runtime Environment) version.
+In order to run QuickFaaS JAR files, you will first need to install JDK 11 (Java Development Kit) or later, which already includes a JRE (Java Runtime Environment) version.
 
 ## QuickFaaS-Auth-1.0-fat.jar
 Run the JAR file on the command line or terminal window:
 ```
 java -jar QuickFaaS-Auth-1.0-fat.jar
 ```
-You will be prompt with several options of cloud providers to choose from. The application will then try to redirect you to the provider's authentication webpage using your default browser. The authentication process relies on the OAuth 2.0 protocol. The application will never have access to your credentials. You will, however, be requested to grant access to a certain number of scopes that are required for the application to work as expected.
+You will be prompt with several options of cloud providers to choose from. The application will then try to redirect you to the provider's authentication web page using your default browser. The authentication process relies on the OAuth 2.0 protocol. The application will never have access to your credentials. You will, however, be requested to grant access to a certain number of scopes that are required for the application to work as expected.
 
 After a successful authentication, an access token will be provided. You will be asked for this token to be inserted in the `func-deployment.json` file to enable FaaS deployments.
 

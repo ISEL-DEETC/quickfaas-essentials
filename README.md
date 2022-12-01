@@ -14,6 +14,12 @@ Be sure to check out the [_wiki_](https://github.com/Pexers/quickfaas-essentials
 ### _QuickFaaS: Providing Portability and Interoperability between FaaS Platforms_
 - Accepted for publication by MDPI in the peer-reviewed scientific journal Future Internet, within the special issue "_Distributed Systems for Emerging Computing: Platform and Application_" - [DOI](https://doi.org/10.3390/fi14120360)
 
+
+## Desktop screenshots 🖥️
+Authentication|Function definition|FaaS Deployment|
+:-------------------------:|:-------------------------:|:-------------------------:|
+<img src="https://user-images.githubusercontent.com/47757441/205137934-11ec91ac-b44b-4f80-9d4f-4297a94ce34a.PNG" width="500">|<img src="https://user-images.githubusercontent.com/47757441/205137982-ffd7c199-7cd3-4f50-a8d3-ad6607cd2378.PNG" width="500">|<img src="https://user-images.githubusercontent.com/47757441/205138397-35c2221c-f851-4f5f-8b8c-18bf68b682e8.PNG" width="450">
+
 ## Directory structure
 ```
 quickfaas-essentials

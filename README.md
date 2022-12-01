@@ -7,7 +7,7 @@ In terms of code development, this repository includes the uniform programming m
 Be sure to check out the [_wiki_](https://github.com/Pexers/quickfaas-essentials/wiki) page for more information regarding the usage of cloud-agnostic libraries.
 
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/47757441/185813592-ed461efa-2c40-4d43-9024-d2cf3fc13324.png" width="370">
+  <img src="https://user-images.githubusercontent.com/47757441/185813592-ed461efa-2c40-4d43-9024-d2cf3fc13324.png" width="360">
 </p>
 
 ## Publications
@@ -18,7 +18,7 @@ Be sure to check out the [_wiki_](https://github.com/Pexers/quickfaas-essentials
 ## Desktop screenshots 🖥️
 Authentication|Function definition|FaaS Deployment|
 :-------------------------:|:-------------------------:|:-------------------------:|
-<img src="https://user-images.githubusercontent.com/47757441/205137934-11ec91ac-b44b-4f80-9d4f-4297a94ce34a.PNG" width="500">|<img src="https://user-images.githubusercontent.com/47757441/205137982-ffd7c199-7cd3-4f50-a8d3-ad6607cd2378.PNG" width="500">|<img src="https://user-images.githubusercontent.com/47757441/205138397-35c2221c-f851-4f5f-8b8c-18bf68b682e8.PNG" width="450">
+<img src="https://user-images.githubusercontent.com/47757441/205137934-11ec91ac-b44b-4f80-9d4f-4297a94ce34a.PNG" width="700">|<img src="https://user-images.githubusercontent.com/47757441/205137982-ffd7c199-7cd3-4f50-a8d3-ad6607cd2378.PNG" width="750">|<img src="https://user-images.githubusercontent.com/47757441/205138397-35c2221c-f851-4f5f-8b8c-18bf68b682e8.PNG" width="650">
 
 ## Directory structure
 ```

@@ -10,6 +10,10 @@ Be sure to check out the [_wiki_](https://github.com/Pexers/quickfaas-essentials
   <img src="https://user-images.githubusercontent.com/47757441/185813592-ed461efa-2c40-4d43-9024-d2cf3fc13324.png" width="400">
 </p>
 
+## Publications
+### _QuickFaaS: Providing Portability and Interoperability between FaaS Platforms_
+- Accepted for publication by MDPI in the peer-reviewed journal Future Internet, within the special issue "Distributed Systems for Emerging Computing: Platform and Application“ - [DOI](https://doi.org/10.3390/fi14120360)
+
 ## Directory structure
 ```
 quickfaas-essentials

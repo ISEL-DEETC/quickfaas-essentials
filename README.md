@@ -16,11 +16,11 @@ Be sure to check out the [_wiki_](https://github.com/Pexers/quickfaas-essentials
 
 
 ## Desktop screenshots 🖥️
-Authentication|Function definition|
+Authentication|Function Definition|
 :-------------------------:|:-------------------------:|
 <img src="https://user-images.githubusercontent.com/47757441/205137934-11ec91ac-b44b-4f80-9d4f-4297a94ce34a.PNG" width="400">|<img src="https://user-images.githubusercontent.com/47757441/205137982-ffd7c199-7cd3-4f50-a8d3-ad6607cd2378.PNG" width="400">|
 
-Function configurations|FaaS Deployment|
+Function Configuration|FaaS Deployment|
 :-------------------------:|:-------------------------:|
 <img src="https://user-images.githubusercontent.com/47757441/205140141-8e12eebd-2e0d-473b-bc2c-553c929e125a.PNG" width="400">|<img src="https://user-images.githubusercontent.com/47757441/205138397-35c2221c-f851-4f5f-8b8c-18bf68b682e8.PNG" width="370">|
 

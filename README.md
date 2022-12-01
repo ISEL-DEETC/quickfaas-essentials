@@ -7,12 +7,12 @@ In terms of code development, this repository includes the uniform programming m
 Be sure to check out the [_wiki_](https://github.com/Pexers/quickfaas-essentials/wiki) page for more information regarding the usage of cloud-agnostic libraries.
 
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/47757441/185813592-ed461efa-2c40-4d43-9024-d2cf3fc13324.png" width="400">
+  <img src="https://user-images.githubusercontent.com/47757441/185813592-ed461efa-2c40-4d43-9024-d2cf3fc13324.png" width="370">
 </p>
 
 ## Publications
 ### _QuickFaaS: Providing Portability and Interoperability between FaaS Platforms_
-- Accepted for publication by MDPI in the peer-reviewed journal Future Internet, within the special issue "Distributed Systems for Emerging Computing: Platform and Application“ - [DOI](https://doi.org/10.3390/fi14120360)
+- Accepted for publication by MDPI in the peer-reviewed scientific journal Future Internet, within the special issue "_Distributed Systems for Emerging Computing: Platform and Application_" - [DOI](https://doi.org/10.3390/fi14120360)
 
 ## Directory structure
 ```

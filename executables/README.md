@@ -21,7 +21,8 @@ Run the JAR file on the command line or terminal window:
 ```
 java -jar QuickFaaS-Deployment-1.0-fat.jar
 ```
-_**Note:**_ Google Cloud Platform deployments require the [_Cloud Functions API_](https://cloud.google.com/functions/docs/reference/rest) and the [_Cloud Resource Manager API_](https://cloud.google.com/resource-manager/reference/rest) enabled.
+> **Note**
+> Google Cloud Platform deployments require the [_Cloud Functions API_](https://cloud.google.com/functions/docs/reference/rest) and the [_Cloud Resource Manager API_](https://cloud.google.com/resource-manager/reference/rest) enabled.
 
 The `func-deployment.json` file can be configured with the following values:
 | Property name | Type | Values & Description |

@@ -1,14 +1,18 @@
 # QuickFaaS Essentials ☁️
 
-QuickFaaS is a multi-cloud interoperability desktop tool targeting cloud-agnostic functions development and FaaS deployments. QuickFaaS substantially improves developer’s productivity, flexibility and agility when creating serverless solutions to multiple cloud providers without requiring the installation of extra software. The proposed cloud-agnostic approach enables developers to reuse their serverless functions in multiple cloud providers, with the convenience of not having to change a single line of code. The solution aims to minimize vendor lock-in issues in FaaS platforms, and will, therefore, encourage developers and organizations to target different cloud providers in exchange for a functional benefit.
-
-In terms of code development, this repository includes the uniform programming model for authentication and FaaS deployments, together with the cloud-agnostic libraries. We also provide an evaluation in the form of Excel spreadsheets to validate the proposed solution by measuring the impact of a cloud-agnostic approach on the function's performance, when compared to a cloud-non-agnostic one.
-
-Be sure to check out the [_wiki_](https://github.com/Pexers/quickfaas-essentials/wiki) page for more information regarding the usage of cloud-agnostic libraries.
+QuickFaaS is a multi-cloud interoperability desktop tool targeting cloud-agnostic functions development and FaaS deployments. QuickFaaS substantially improves developers' productivity, flexibility and agility when creating serverless solutions to multiple cloud providers, **without requiring the installation of provider-specific software**. The proposed cloud-agnostic approach enables developers to reuse their serverless functions in different cloud providers with **no need to rewrite** code. The solution aims to **minimize vendor lock-in** in FaaS platforms by increasing the portability of serverless functions, which will, therefore, encourage developers and organizations to target different providers in exchange for a functional benefit.
 
 <p align="center">
   <img src="https://user-images.githubusercontent.com/47757441/185813592-ed461efa-2c40-4d43-9024-d2cf3fc13324.png" width="360">
 </p>
+
+> **Note**  
+> - QuickFaaS was originally developed within the context of a Master’s degree dissertation titled "_Characterizing and Providing Interoperability to
+FaaS Platforms_", at Instituto Superior de Engenharia de Lisboa (ISEL), Lisboa, Portugal.
+
+In terms of code development, this repository includes the uniform programming model for authentication and FaaS deployments, together with the cloud-agnostic libraries. We also provide an evaluation in the form of Excel spreadsheets to validate the proposed solution by measuring the impact of a cloud-agnostic approach on the function's performance, when compared to a cloud-non-agnostic one.
+
+Be sure to check out the [_wiki_](https://github.com/Pexers/quickfaas-essentials/wiki) page for more information regarding the usage of cloud-agnostic libraries.
 
 ## Publications
 ### _QuickFaaS: Providing Portability and Interoperability between FaaS Platforms_

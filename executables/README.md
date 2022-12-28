@@ -26,7 +26,7 @@ java -jar QuickFaaS-Deployment-1.0-fat.jar
 
 The `func-deployment.json` file can be configured with the following values:
 | Property name | Type | Values & Description |
-| --- | --- | --- |
+| --- | :---: | --- |
 | **cloudProvider** | _string_ | `gcp`, `msazure`<br/>The chosen cloud provider for the FaaS deployment. |
 | **accessToken** | _string_ | The OAuth 2.0 access token provided by `QuickFaaS-Auth-1.0-fat.jar` after a successful authentication. |
 | **subscriptionId**<br/>[MsAzure exclusive] | _string_ | MsAzure active subscription ID. |

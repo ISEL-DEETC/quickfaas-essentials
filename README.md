@@ -21,7 +21,7 @@ Be sure to check out the [_wiki_](https://github.com/Pexers/quickfaas-essentials
 - [Accepted for publication](https://doi.org/10.3390/fi14120360) by MDPI in the peer-reviewed scientific journal _Future Internet_, within the special issue "_Distributed Systems for Emerging Computing: Platform and Application_".
 - [Included in the proceedings](https://link.springer.com/book/9783031232992) of the _9<sup>th</sup> European Conference On Service-Oriented And Cloud Computing_ (ESOCC), in the projects track, to be published by Springer in the _Communications in Computer and Information Science_ (CCIS) book series.
 
-## Application screenshots 🖥️
+## Application screenshots 💻
 Authentication|Function Configuration|
 :-------------------------:|:-------------------------:|
 <kbd><img src="https://user-images.githubusercontent.com/47757441/209371994-3bfa1416-dd7a-482c-8031-4897dedf9df0.png" width="400"></kbd>|<kbd><img src="https://user-images.githubusercontent.com/47757441/209371997-8713343a-1942-4a37-a21f-aa554723b99f.png" width="400"></kbd>|

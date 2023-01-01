@@ -18,8 +18,8 @@ Be sure to check out the [_wiki_](https://github.com/Pexers/quickfaas-essentials
 
 ## Publications 📰
 #### _QuickFaaS: Providing Portability and Interoperability between FaaS Platforms_
-- [Accepted for publication](https://doi.org/10.3390/fi14120360) by MDPI in the peer-reviewed scientific journal _Future Internet_, within the special issue "_Distributed Systems for Emerging Computing: Platform and Application_".
-- [Included in the proceedings](https://doi.org/10.1007/978-3-031-23298-5_6) of the _9<sup>th</sup> European Conference On Service-Oriented And Cloud Computing_ (ESOCC), in the projects track, published by Springer in the _Communications in Computer and Information Science_ (CCIS) book series.
+- [[DOI](https://doi.org/10.3390/fi14120360)] Accepted for publication by MDPI in the peer-reviewed scientific journal _Future Internet_, within the special issue "_Distributed Systems for Emerging Computing: Platform and Application_".
+- [[DOI](https://doi.org/10.1007/978-3-031-23298-5_6)] Included in the proceedings of the _9<sup>th</sup> European Conference On Service-Oriented And Cloud Computing_ (ESOCC), in the projects track, published by Springer in the _Communications in Computer and Information Science_ (CCIS) book series.
 
 ## Application screenshots 💻
 Authentication|Function Configuration|

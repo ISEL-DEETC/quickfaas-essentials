@@ -26,7 +26,7 @@ fun main() {
  * Obtains selected cloud provider option
  */
 fun getSelectedProvider(scan: Scanner): Int {
-    println("Which cloud provider would you like to authenticate?")
+    println("In which cloud provider would you like to authenticate?")
     var option: Int
     do {
         println(" 0: Microsoft Azure")

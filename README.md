@@ -30,7 +30,7 @@ Function Definition|FaaS Deployment|
 :-------------------------:|:-------------------------:|
 <kbd><img src="https://user-images.githubusercontent.com/47757441/209371999-e5dd8e98-824f-444f-9394-9c16a47279f7.png" width="400"></kbd>|<kbd><img src="https://user-images.githubusercontent.com/47757441/209372001-5b8109b7-f975-46ef-b351-1d106666c9f8.png" width="400"></kbd>|
 
-## Directory structure
+## Folder structure
 ```
 quickfaas-essentials
 │   LICENSE -> apache License 2.0 

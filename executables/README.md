@@ -4,8 +4,8 @@ In order to run QuickFaaS JAR files, you will first need to install JDK 11 (Java
 
 ## QuickFaaS-Auth-1.0-fat.jar
 Run the JAR file on the command line or terminal window:
-```
-java -jar QuickFaaS-Auth-1.0-fat.jar
+```sh
+$ java -jar QuickFaaS-Auth-1.0-fat.jar
 ```
 You will be prompt with several options of cloud providers to choose from. The application will then try to redirect you to the provider's authentication web page using your default browser. The authentication process relies on the OAuth 2.0 protocol. The application will never have access to your credentials. You will, however, be requested to grant access to a certain number of scopes that are required for the application to work as expected.
 
@@ -18,8 +18,8 @@ Before running the JAR file, make sure you have your cloud-agnostic function fil
 
 The `./function-deployment` directory as well as the `func-deployment.json` file should be on the same directory as the JAR file.  
 Run the JAR file on the command line or terminal window:
-```
-java -jar QuickFaaS-Deployment-1.0-fat.jar
+```sh
+$ java -jar QuickFaaS-Deployment-1.0-fat.jar
 ```
 > **Note**
 > Google Cloud Platform deployments require the [_Cloud Functions API_](https://cloud.google.com/functions/docs/reference/rest) and the [_Cloud Resource Manager API_](https://cloud.google.com/resource-manager/reference/rest) enabled.
